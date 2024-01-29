@@ -1,10 +1,10 @@
 {
   "name": "reactproject",
   "version": "1.0.0",
-  "description": "",
+  "description": "How to create your own react App",
   "scripts": {
     "test": "jest",
-    "build":"parcel build index.html",
+    "build": "parcel build index.html",
     "start": "parcel index.html"
   },
   "author": "vedant singh",
@@ -14,6 +14,7 @@
     "process": "^0.11.10"
   },
   "dependencies": {
+    "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
