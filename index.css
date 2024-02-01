@@ -1,4 +1,55 @@
-#heading
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.header
 {
-    color: red;
+    display: flex;
+    /* flex-direction: row-reverse; */
+    justify-content: space-between;
+    align-items: center;
+    background-color: aquamarine;
+}
+.logo
+{
+    width: 150px;
+    /* height: 200px; */
+}
+.nav-ul{
+    display: flex;
+    font-size: 24px;
+    flex-direction: row;
+    list-style-type: none;
+    margin-bottom: 10px;
+    margin-right: 20px;
+}
+.nav-ul > li{
+    padding: 10px;
+    margin:  10px;
+}
+.res-card
+{
+    /* height: 300px; */
+    width: 200px;
+    border: 3px solid yellowgreen;
+    padding: 5px;
+}
+.res-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10;
+}
+
+.search
+{
+    padding: 10px;
+}
+.card-img
+{
+    max-width: 100%;
+    border-radius: 5px;
 }

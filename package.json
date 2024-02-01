@@ -1,6 +1,6 @@
 {
   "name": "reactproject",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "How to create your own react App",
   "scripts": {
     "test": "jest",
@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^1.6.7",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "url": "^0.11.3"
   }
 }
