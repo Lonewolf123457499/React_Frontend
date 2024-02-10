@@ -10,13 +10,11 @@ const Header = () => {
             </div>
             <div className="nav-item">
                 <ul className="nav-ul">
-                    <li>
-                        <Link to={"/"}>Home</Link></li>
+                    <li> <Link to={"/"}>Home</Link></li>
                     <li><Link to={"/about"}>About-Us</Link></li>
                     <li><Link to={"/contact"}>Contact</Link></li>
                     <li>
                         <Link to={"/Cart"}><IoCartOutline style={{ width: 75 }} /></Link>
-                         
                     </li>
 
                     <li><DarkMode /></li>

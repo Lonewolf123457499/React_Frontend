@@ -6,6 +6,7 @@ import { IoIosSearch } from "react-icons/io";
 import resList from "../utils/Data";
 import Shimmer from "./Shimmer";
 import Cards2 from "./Cards2";
+import { Link } from "react-router-dom";
 
 
 
@@ -72,16 +73,20 @@ const Body = () => {
 
                 {
                     listRestaurent?.map((item) => {
+                    
                         return (
-                            <div key={item.info.id} >
+                            
+                            <Link to={"/res/"+item.info.id}
+                             key={item.info.id} >
                                 <Card resData={item} />
-                            </div>
+                        
+                            </Link>
                         )
 
                     })
                 }
 
-                <Cards2/>
+                {/* <Cards2/> */}
 
 
             </div>
