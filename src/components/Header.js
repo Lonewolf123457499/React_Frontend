@@ -1,5 +1,7 @@
 import { IoCartOutline } from "react-icons/io5";
 import { LOGO } from "../utils/constant";
+import DarkMode from "./DarkMode";
+import { Link } from "react-router-dom";
 const Header = () => {
     return (
         <div className="header">
@@ -8,10 +10,16 @@ const Header = () => {
             </div>
             <div className="nav-item">
                 <ul className="nav-ul">
-                    <li>Home</li>
-                    <li>Order</li>
-                    <li>ContactUS</li>
-                    <li><IoCartOutline style={{ width: 75 }} /></li>
+                    <li>
+                        <Link to={"/"}>Home</Link></li>
+                    <li><Link to={"/about"}>About-Us</Link></li>
+                    <li><Link to={"/contact"}>Contact</Link></li>
+                    <li>
+                        <Link to={"/Cart"}><IoCartOutline style={{ width: 75 }} /></Link>
+                         
+                    </li>
+
+                    <li><DarkMode /></li>
 
                 </ul>
             </div>
