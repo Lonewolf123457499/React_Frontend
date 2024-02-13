@@ -3,26 +3,15 @@ import Shimmer from "./Shimmer";
 import { CDN_LINK } from "../utils/constant";
 import { useParams } from "react-router-dom";
 import { RES_MENU } from "../utils/constant";
+import useMenu from "../hooks/useMenu" 
+import useOnline from "../hooks/useOnline";
+
 
 const ResMenu = () => {
 
 
     const {resId}=useParams();
-    
-
-    const [resList, setresListt] = useState(null);
-    useEffect(() => {
-        fetchMenu()
-    }, [])
-    const fetchMenu = async function () {
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=27.6054391&lng=77.5945308&restaurantId=" +resId)
-        // console.log("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=27.6054391&lng=77.5945308&restaurantId=" + resId)
-        const json = await data.json()
-        // console.log(json)
-        setresListt(json.data);
-
-
-    }
+    const resList=useMenu(resId);
 
     if (resList == null) {
         return <Shimmer />
@@ -36,7 +25,6 @@ const ResMenu = () => {
 
 
     
-
     return (<>
         <h1> {name}</h1>
         <h3>{cuisines.join(",")}</h3>

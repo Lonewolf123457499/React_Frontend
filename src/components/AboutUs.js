@@ -1,9 +1,11 @@
+import UserClass from "./UserClass";
+
  export default function AboutUs(props) {
     
-
+    console.log("inside the about us section")
     return (
         <>
-        <h1> It is About us page</h1>
+        <UserClass name={"vedant singh"} location={"mathura"}/>
             
         </>
     )

@@ -374,3 +374,13 @@ body {
 {
     max-width:40vw;
 }
+.user-card
+{
+    border:  solid 2px black;
+    height: 300px;
+}
+.profile
+{
+    max-height: 12.5vh;
+    border-radius: 50%;
+}
