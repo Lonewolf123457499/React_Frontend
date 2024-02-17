@@ -8,14 +8,18 @@ import Shimmer from "./Shimmer";
 import Cards2 from "./Cards2";
 import { Link } from "react-router-dom";
 
+import useOnline from "../hooks/useOnline";
+import { promotedResCard } from "./Card";
 
-
-
-// const [listRestaurent, setListRestaurent]=React.useState(resList)
 
 const Body = () => {
     const [listRestaurent, setListRestaurent] = useState([])
-    const [searchText, setSearchText] = useState("")
+    const [searchText, setSearchText] = useState("");
+    const onlineStatus = useOnline();
+   
+    const VegCard=promotedResCard(Card);
+    // console.log(vegCard);
+
     useEffect(() => {
         fetchData();
 
@@ -28,15 +32,23 @@ const Body = () => {
         setListRestaurent(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
 
     }
+
+    if (onlineStatus == false) {
+        return <h1>Seems that you are not connected to the internet
+
+        </h1>
+
+    }
+
     if (listRestaurent?.length == 0) {
         return <Shimmer />
     }
     return (
-        <div className="body-container">
+        <div className="mt-4 z-0" >
+            <div className=" flex">
+            <div className="">
 
-            <div className="filter">
-
-                <button onClick={() => {
+                <button className=" bg-green-100 rounded-md  px-2 py-2 m-12 hover:scale-95 duration-200 text-gray-500 border-2 border-solid border-green-400  " onClick={() => {
                     filteredlistRestaurent = listRestaurent.filter((item) => {
 
                         return item.info.avgRating > 4.3
@@ -47,46 +59,56 @@ const Body = () => {
 
                 }>Top-rated</button>
             </div>
-            <div class="wrap">
-                <div class="search">
-                    <input type="text" class="searchTerm" placeholder="What are you looking for?" value={searchText}
-                     onChange={(e) => {
+
+            <div className="flex  m-12">
+                    <div className="px-3 py-3   rounded-l-md border-2 border-solid border-green-200">
+                <input className="rounded-md " type="text"  class="searchTerm" placeholder="Search here......" value={searchText}
+                    onChange={(e) => {
                         setSearchText(e.target.value)
                     }} />
-                    <button type="submit" class="searchButton" 
-                    onClick={()=>{
-                          const searchfilter=listRestaurent.filter((resdata)=>{
-                            console.log(resdata.info.name,searchText)
+                    </div>
+                <button type="submit" className="flex justify-center items-center py-4 px-4  bg-green-200 rounded-r-md hover:scale-95 duration-200"
+                    onClick={() => {
+                        const searchfilter = listRestaurent.filter((resdata) => {
+                            console.log(resdata.info.name, searchText)
                             return resdata.info.name.toLowerCase().includes(searchText.toLowerCase)
                         })
                         setListRestaurent(searchfilter)
                     }}
-                    >
-                        <IoIosSearch />
-                    </button>
-                </div>
+                >
+                    <IoIosSearch />Search
+                </button>
             </div>
+            </div>
+            {/* <div>
+                <img className="min-w-max" src="https://t4.ftcdn.net/jpg/02/94/26/33/360_F_294263329_1IgvqNgDbhmQNgDxkhlW433uOFuIDar4.jpg" />
+            </div> */}
 
-            <div className="res-container"
-            >
+
+
+
+
+
+            <div className=" flex justify-center items-center flex-wrap gap-4">
 
 
                 {
                     listRestaurent?.map((item) => {
-                    
+
                         return (
-                            
-                            <Link to={"/res/"+item.info.id}
-                             key={item.info.id} >
-                                <Card resData={item} />
-                        
+
+                            <Link to={"/res/" + item.info.id}
+                                key={item.info.id} >
+
+                                {console.log(item.info.veg)}
+                                {item.info.veg==true ? (<VegCard resData={item} />) : (<Card resData={item} />)}
+                                {/* <Card resData={item} /> */}
+
                             </Link>
                         )
 
                     })
                 }
-
-                {/* <Cards2/> */}
 
 
             </div>

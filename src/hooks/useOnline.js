@@ -4,20 +4,20 @@ const useOnline=()=>{
 
     const [onlineStatus,setOnlineStatus]=useState(true);
     useEffect(()=>{
-        window.addEventListener("online", (event) => {
+        window.addEventListener("online", () => {
             console.log("You are now connected to the network.");
             setOnlineStatus(true)
         });
         
     
-    })
+    },[])
 
     useEffect(() => {
-        window.addEventListener("offline", (event) => {
+        window.addEventListener("offline",() => {
             setOnlineStatus(false)
-            console.log("You are now connected to the network.");
+            console.log("You are now  not connected to the network.");
         });
-    })
+    },[])
 
     return onlineStatus;
 

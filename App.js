@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Suspense, lazy } from "react"
 import  ReactDOM from "react-dom/client"
 
 import Header from "./src/components/Header";
@@ -9,12 +9,13 @@ import AboutUs from "./src/components/AboutUs";
 import Contact from "./src/components/Contact";
 import ResMenu from "./src/components/ResMenu";
 import Cart from "./src/components/Cart";
+import  Grocery  from "./src/components/Grocery";
 
 //   this the to gave css in jsx  we gave css in object form
 // style = {{ backgroundColor: "grey" }}
 
 
-
+const Grocery = lazy(() => import("./src/components/Grocery"));
 const AppLayout=()=>{
     return(
       <div>
@@ -44,6 +45,12 @@ const appRout = createBrowserRouter([
       {
         path:"/cart",
         element:<Cart/>
+
+
+      },
+      {
+        path: "/grocery",
+        element: <Suspense fallback={<h1>Grocery items are loading.......</h1>}><Grocery /></Suspense>
 
 
       },
